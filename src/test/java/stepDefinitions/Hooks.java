@@ -1,17 +1,17 @@
 package stepDefinitions;
 
-import config.environment;
+import config.Environment;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
 
-public class hooks {
+public class Hooks {
     private WebDriver driver;
 
     @Before
     public void before(){
-        driver = environment.getInstance().getDriver();
+        driver = Environment.getInstance().getDriver();
     }
 
     @After
@@ -19,6 +19,6 @@ public class hooks {
         if (scenario.isFailed()) {
             driver.manage().deleteAllCookies(); // Clear cookies if test fails
         }
-        environment.getInstance().quitDriver();
+        Environment.getInstance().quitDriver();
     }
 }
